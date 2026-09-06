@@ -39,17 +39,19 @@ with col_left:
         'Status': ['Normal', 'Critical Warning', 'Advisory', 'Normal'],
         'Risk_Score': [12, 87, 45, 10]
     })
-    fig_map = px.scatter_mapbox(
+    
+    # Updated to px.scatter_map for latest Plotly compatibility
+    fig_map = px.scatter_map(
         map_data, 
         lat="lat", 
         lon="lon", 
         color="Status",
         size="Risk_Score",
         color_discrete_map={'Normal': '#00E676', 'Advisory': '#FFD600', 'Critical Warning': '#FF1744'},
-        zoom=13,
+        zoom=12,
         height=400
     )
-    fig_map.update_layout(mapbox_style="carto-darkmatter")
+    fig_map.update_layout(map_style="carto-darkmatter")
     st.plotly_chart(fig_map, use_container_width=True)
 
 with col_right:
